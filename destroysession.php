@@ -1,6 +1,6 @@
 <?php
-session_destroy();
-session_unset();
+session_start();
+
 if (isset($_SERVER['HTTP_COOKIE'])) {
     $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
     foreach($cookies as $cookie) {
@@ -10,7 +10,8 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
         setcookie($name, '', time()-1000, '/');
     }
 }
+session_destroy();
 require_once("private/config.php");
-header("Location:{$adress}");
+header("Location:{$adress}index.html");
 
 ?>

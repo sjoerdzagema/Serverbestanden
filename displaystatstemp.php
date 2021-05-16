@@ -1,7 +1,6 @@
 <?php
 require_once("private/config.php");
 
-
 $result301 = mysqli_query($conn,"SELECT gameid,player1,player2,result FROM games ORDER BY endtime DESC LIMIT 1");
   
 $player2scores = array();
