@@ -4,7 +4,7 @@ if(empty($_SESSION['userLogin']) || $_SESSION['userLogin'] == ''){
     
     die();
 }
-
+$_SESSION['winsession'] = 1;
 ?>
 
 <!DOCTYPE html>

@@ -3,7 +3,7 @@
 session_start();
 require_once("private/config.php");
 require_once("sqlgetgameinfo.php");
-require_once("private/config.php");
+
 
 $score = ($_POST['score']);
 $playerid = $_SESSION['userid'];
@@ -53,6 +53,7 @@ VALUES ($playerid, $gameid, $score)";
 if ($conn->query($sql) === FALSE) {
  
   echo "Error: " . $sql . "<br>" . $conn->error;
+  die();
 }
 
 $conn->close();
@@ -79,6 +80,7 @@ VALUES ($playerid, $gameid, $score)";
 if ($conn->query($sql) === FALSE) {
  
   echo "Error: " . $sql . "<br>" . $conn->error;
+  die();
 }
 
 $conn->close();
@@ -104,6 +106,7 @@ if ($_SESSION['player1id'] == $_SESSION['userid']){
 	  if ($conn->query($sql20) === FALSE) {
  
   echo "Error: " . $sql20 . "<br>" . $conn->error;
+  die();
 }
 
 $conn->close();
@@ -130,6 +133,7 @@ header("Location:{$adress}/win.php");
 	  if ($conn->query($sql23) === FALSE) {
  
   echo "Error: " . $sql23 . "<br>" . $conn->error;
+  die();
 }
 
 $conn->close();

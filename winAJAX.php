@@ -4,6 +4,12 @@ if(empty($_SESSION['userLogin']) || $_SESSION['userLogin'] == ''){
   require_once("private/config.php");
   header("Location:{$adress}");
 }
+
+if(!isset($_SESSION['winsession']))
+{
+  header("Location:{$adress}dashboard.php");
+  die();
+}
 ?>
 
 <!DOCTYPE html>

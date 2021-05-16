@@ -2,22 +2,18 @@
 session_start();
 if(empty($_SESSION['userLogin']) || $_SESSION['userLogin'] == ''){
   require_once("private/config.php");
-  header("Location:{$adress}/playgame.php");
+  header("Location:{$adress}index.html");
     die();
 	
 }
 
-// This is to check if the request is coming from a specific domain
-$ref = $_SERVER['HTTP_REFERER'];
-#$refData = parse_url($ref);
-require_once("private/config.php");
-
 //restrict access to win page
-if($ref !== '{$adress}/playgame.php') {
-  //Output string and stop execution
-	echo $ref;
-	header("Location:{$adress}/dashboard.php");
-	die();
+require_once("private/config.php");
+// This is to check if the request is coming from a specific domain
+if(!isset($_SESSION['winsession']))
+{
+  header("Location:{$adress}dashboard.php");
+  die();
 }
 
 
@@ -150,7 +146,6 @@ if ($conn->query($sql) === FALSE) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 	
-
 	
 ?>
 <div class="container">

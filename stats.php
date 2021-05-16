@@ -1,7 +1,8 @@
 <?php 
 session_start();
 if(empty($_SESSION['userLogin']) || $_SESSION['userLogin'] == ''){
-    header("Location: https://localhost/Sjoerd/login.html");
+  require_once("private/config.php");
+  header("Location:{$adress}index.html");
     die();
 }
 ?>
