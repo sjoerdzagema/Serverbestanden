@@ -12,14 +12,14 @@ $ref = $_SERVER['HTTP_REFERER'];
 #$refData = parse_url($ref);
 require_once("private/config.php");
 
-/*
+
 if($ref !== '{$adress}/playgame.php') {
   //Output string and stop execution
 	echo $ref;
 	header("Location:{$adress}/dashboard.php");
 	die();
 }
-*/
+
 
 ?>
 
