@@ -3,7 +3,7 @@ session_start();
 if(empty($_SESSION['userLogin']) || $_SESSION['userLogin'] == ''){
   require_once("private/config.php");
     header("Location:{$adress}");
-    die();
+  
 }
 
 ?>
