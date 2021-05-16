@@ -16,6 +16,7 @@ $useridcheck = $_SESSION['userid'];
 //var_dump($usernamecheck);
 
 // player 1 or player 2
+//ppl
 
 $result30 = mysqli_query($conn,"SELECT player1_active,player2_active FROM games WHERE result IS NULL AND token = $token ORDER BY starttime DESC LIMIT 1" );
 
