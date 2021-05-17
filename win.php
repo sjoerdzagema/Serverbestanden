@@ -4,9 +4,9 @@ if(empty($_SESSION['userLogin']) || $_SESSION['userLogin'] == ''){
   require_once("private/config.php");
   header("Location:{$adress}index.html");
     die();
-	
-}
+	}
 
+  
 //restrict access to win page
 require_once("private/config.php");
 // This is to check if the request is coming from a specific domain
@@ -184,31 +184,20 @@ if ($conn->query($sql) === FALSE) {
   </tbody>
 </table>
 
-<div id = "gekhuis">
-<progress value="0" max="10" id="progressBar"></progress>
+
+<div class="container">  
+    <div class="row">
+    <div class="col text-center">
+      <div class="col-xs-12">  
+      <button onclick="window.location.href=adress+endpoint" class="btn btn-success">Next</button>
+      </div>  
 </div>
 
-
 <script>
-window.setTimeout(function(){
-
-// Move to a new location or you can do something else
 var adress = <?php echo json_encode($adress) ?>;
-window.location.href = adress+"dashboard.php";
-
-}, 11000);
+var endpoint = "dashboard.php";
 </script>
 
-<script>
-  var timeleft = 10;
-var downloadTimer = setInterval(function(){
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-  }
-  document.getElementById("progressBar").value = 10 - timeleft;
-  timeleft -= 1;
-}, 1000);
-  </script>
-  
+
 </body>
 </html>

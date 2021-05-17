@@ -25,7 +25,7 @@ if (mysqli_num_rows($resultgameinfo) == 0){
 else {
   echo 'problem sqlgetgameinfor';
   require_once("private/config.php");
-  header("Location:{$adress}/index.html");
+  header("Location:{$adress}index.html");
     die(mysqli_error($conn));
 };
 
