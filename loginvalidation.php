@@ -5,7 +5,7 @@ require_once("private/config.php");
 if (empty($_POST['username']) ||
     empty($_POST['password'])) {
     
-    header('Location:', $adress);
+    header("Location:{$adress}");
     die();
 }
 
