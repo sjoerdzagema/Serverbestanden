@@ -153,10 +153,7 @@ else{$scoreplayer = $_SESSION['player2score'];
   <div class="col-sm"><h5 class="display-2"><?php echo $_SESSION['usernamelogin']; ?></h5></div>
   <div class="col-sm" ><h1 class="display-1"><?php echo $scoreplayer ?></h1></div>
 
-  <?php
-if ($_SESSION['playerturn'] == $_SESSION['userid'] ) : ?>
- 
-  <form action="updatescore.php" method="POST">
+   <form action="updatescore.php" method="POST" id="giveform">
     <div class="row">
     <div class="col text-center">
       <div class="col-xs-12">
@@ -169,13 +166,13 @@ if ($_SESSION['playerturn'] == $_SESSION['userid'] ) : ?>
   </div>
 </div>
 </div>
-<?php endif; ?>
+
 
 <div class="container">
 <div class="row">
-  <div class="col-sm"><h5 class="display-2"><?php echo $_SESSION['otherusername'];
+  <div class="col-sm" id="display2username"><h5 class="display-2"><?php echo $_SESSION['otherusername'];
 ?></h5></div>
-  <div class="col-sm" ><h1 class="display-1"><?php echo $otherscore ?></h1></div>
+  <div class="col-sm" id="display1score" ><h1 class="display-1"><?php echo $otherscore ?></h1></div>
 </div>
 </div>
 
@@ -194,25 +191,19 @@ function myFunction() {
 
 <script>
 
-$(document).ready(function() {
-  setInterval(function() {
-    cache_clear()
-  }, 11000);
+$(document).ready(function() {    
+        $("#giveform").hide();
 });
-
-
-function cache_clear() {
-  window.location.reload(true);
-  // window.location.reload(); use this if you do not remove cache
-}
-
 
 </script>
 
 <script>
 
 //Call the yourAjaxCall() function every 1000 millisecond
-setInterval("yourAjaxCall()",1000);
+setInterval("yourAjaxCall()",3000);
+
+//Call the yourAjaxCall() function every 1000 millisecond
+setInterval("checkplayerturn()",5000);
 
 
 function yourAjaxCall(){
@@ -231,6 +222,20 @@ function yourAjaxCall(){
             if (response != 'inprogress' || response != 'problem sir') fail(response);
         }
 
+    });
+}
+
+function checkplayerturn(){
+  $.ajax({    //create an ajax request to display.php
+        type: "GET",
+        url: "checkturnplayer.php",             
+        dataType: "html",   //expect html to be returned                
+        success: function(response){
+          $("#display1score").load(" #display1score");
+          if (response == true){
+            $("#giveform").show();
+              }                  
+        },
     });
 }
   
